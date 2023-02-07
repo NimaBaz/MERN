@@ -1,9 +1,9 @@
 class Ninja{
-    constructor(name, health) {
+    constructor(name, health, speed, strength) {
         this.name = name;
         this.health = health;
-        this.speed = 100;
-        this.strength = 100;
+        this.speed = speed;
+        this.strength = strength;
     }
 
     punch() {
@@ -21,6 +21,13 @@ class Ninja{
         return this;
     }
 
+    flip() {
+        this.health += 10;
+        this.speed -= 10;
+        console.log("hooooooo!")
+        return this;
+    }
+
     hit() {
         this.health -= 300;
         this.speed -= 10;
@@ -29,9 +36,27 @@ class Ninja{
         return this;
     }
 
+    attack(target) {
+        target.health -= this.strength;
+        console.log(`Yah!! ${this.name} attacked ${target.name}, dealing ${this.strength} damage!`);
+        console.log(`${target.name} now has ${target.health} HP.`)
+        return this;
+    }
+
     drinkSake() {
         this.health += 100;
         console.log("Hell Yea!");
+        return this;
+    }
+
+    finishThem(target) {
+        target.health -= 5000;
+        console.log(`Yah!! ${this.name} attacked ${target.name}, dealing the final blow of 5000 damage!`);
+        console.log(`${target.name} now has ${target.health} HP.`)
+
+        if (target.health <= 0) {
+            console.log("They're finished!")
+        }
         return this;
     }
 
