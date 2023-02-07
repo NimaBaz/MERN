@@ -46,28 +46,29 @@ class Ninja{
     }
 }
 
-const ninja1 = new Ninja("Big Man", 1000);
-const ninja2 = new Ninja("The Rock", 1000);
-ninja1.sayName()
-console.log("---------------------------------------");
-ninja1.showStats()
-console.log("---------------------------------------");
-ninja1.punch().punch().punch().punch().punch()
-ninja1.hit()
-console.log("---------------------------------------");
-ninja1.showStats()
+// const ninja1 = new Ninja("Big Man", 1000);
+// const ninja2 = new Ninja("The Rock", 1000);
 
-console.log("---------------------------------------");
+// ninja1.sayName()
+// console.log("---------------------------------------");
+// ninja1.showStats()
+// console.log("---------------------------------------");
+// ninja1.punch().punch().punch().punch().punch()
+// ninja1.hit()
+// console.log("---------------------------------------");
+// ninja1.showStats()
 
-ninja2.sayName()
-console.log("---------------------------------------");
-ninja2.showStats()
-console.log("---------------------------------------");
-ninja2.duck().duck().duck().duck()
-ninja2.hit()
-ninja2.punch()
-ninja2.drinkSake()
-console.log("---------------------------------------");
-ninja2.showStats()
+// console.log("---------------------------------------");
+
+// ninja2.sayName()
+// console.log("---------------------------------------");
+// ninja2.showStats()
+// console.log("---------------------------------------");
+// ninja2.duck().duck().duck().duck()
+// ninja2.hit()
+// ninja2.punch()
+// ninja2.drinkSake()
+// console.log("---------------------------------------");
+// ninja2.showStats()
 
 module.exports = Ninja;
