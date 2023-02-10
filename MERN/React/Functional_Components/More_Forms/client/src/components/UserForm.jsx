@@ -1,5 +1,15 @@
 import React, { useState } from  'react';
 
+const darkMode = {
+    backgroundColor: "black",
+    color: "white"
+}
+
+const lightMode = {
+    backgroundColor: "white",
+    color: "black"
+}
+
 const UserForm = (props) => {
     // State variables
     // Getters & Setters
@@ -16,6 +26,8 @@ const UserForm = (props) => {
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
     const [listOfUsers, setListOfUsers] = useState([]);
+    const [light, setLight] = useState(true);
+    const switchLight = () => setLight(!light);
 
 
     const createUser = (e) => {
@@ -26,6 +38,16 @@ const UserForm = (props) => {
 
         setHasBeenSubmitted(true);
     };
+
+    const deleteUser = (e, idx) => {
+        console.log("Deleting pet: ", idx);
+
+        let copy = listOfUsers.filter((user, i) => {
+            console.log(`${user} ${idx} will be removed from our list of users`);
+            return i !== idx
+        })
+        setListOfUsers(copy)
+    }
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value);
@@ -96,6 +118,9 @@ const UserForm = (props) => {
 
     return(
         <>
+        <div className="btn1" style={light ? lightMode : darkMode}>
+            <button onClick={switchLight} className="btn btn-warning">{light ? "Dark Mode" : "Light Mode"}</button>
+        </div>
         <h1>User Form</h1>
         <form onSubmit={ createUser } className="form-container">
             {
@@ -156,15 +181,19 @@ const UserForm = (props) => {
             <button onClick={createUser} className="btn btn-outline-dark">Create User</button>
         </form>
         
-        <div className="user-list">
+        <div className="user-list" style={light ? lightMode : darkMode}>
+            <button onClick={switchLight} className="btn btn-warning">{light ? "Dark Mode" : "Light Mode"}</button>
             {
                 listOfUsers.map((user, idx) => {
                     return (
                         <div key={idx}>
+                            <h2>This is my unique key: {idx}</h2>
                             <img src={user.img} alt="User Pic" height="200px"/>
                             <h1>{user.firstName} {user.lastName}</h1>
                             <h3>{user.email}</h3>
                             <h4>{user.password}</h4>
+                            <button onClick={(e) => deleteUser(e, idx)} className="btn-outline-danger">Delete</button>
+                            <hr />
                         </div>
                     )
                 })

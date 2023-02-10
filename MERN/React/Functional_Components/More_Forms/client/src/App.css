@@ -2,8 +2,18 @@
   text-align: center;
 }
 
+.btn1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .btn-outline-dark {
   margin-top: 10px;
+}
+
+button {
+  margin-right: 5px;
 }
 
 .form-container {
