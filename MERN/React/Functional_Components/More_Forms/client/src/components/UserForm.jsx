@@ -6,6 +6,7 @@ const UserForm = (props) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
+    const [img, setImg] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
@@ -14,12 +15,12 @@ const UserForm = (props) => {
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
-    const [listOfUsers, setListOfUsers] = useState([])
+    const [listOfUsers, setListOfUsers] = useState([]);
 
 
     const createUser = (e) => {
         e.preventDefault();
-        const newUser = { firstName, lastName, email, password, confirmPassword };
+        const newUser = { firstName, lastName, email, img, password, confirmPassword };
         console.log("Welcome", newUser);
         setListOfUsers([...listOfUsers, newUser])
 
@@ -95,7 +96,8 @@ const UserForm = (props) => {
 
     return(
         <>
-        <form onSubmit={ createUser }>
+        <h1>User Form</h1>
+        <form onSubmit={ createUser } className="form-container">
             {
                 hasBeenSubmitted ?
                 <h3>Thank you for submitting the form!</h3> :
@@ -130,6 +132,10 @@ const UserForm = (props) => {
                 }
             </div>
             <div>
+                <label>User Image: </label> 
+                <input type="text" onChange={ (e) => {setImg(e.target.value)} } className="form-control"/>
+            </div>
+            <div>
                 <label>Password: </label>
                 <input type="text" onChange={ handlePassword} className="form-control"/>
                 {
@@ -150,11 +156,12 @@ const UserForm = (props) => {
             <button onClick={createUser} className="btn btn-outline-dark">Create User</button>
         </form>
         
-        <div className="form">
+        <div className="user-list">
             {
                 listOfUsers.map((user, idx) => {
                     return (
                         <div key={idx}>
+                            <img src={user.img} alt="User Pic" height="200px"/>
                             <h1>{user.firstName} {user.lastName}</h1>
                             <h3>{user.email}</h3>
                             <h4>{user.password}</h4>

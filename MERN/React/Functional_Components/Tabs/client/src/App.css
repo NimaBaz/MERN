@@ -2,19 +2,6 @@
   text-align: center;
 }
 
-.btn-outline-dark {
-  margin-top: 10px;
-}
-
-.form-container {
-  margin: 0 auto;
-  width: 500px;
-}
-
-.user-list {
-  margin-bottom: 50px;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
