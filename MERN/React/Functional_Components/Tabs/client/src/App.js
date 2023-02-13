@@ -1,13 +1,16 @@
 import './App.css';
-import Tabs from './components/Tabs';
+import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import MessageBoard from './views/MessageBoard';
+
 
 function App() {
-  return (
-    <div className="App">
-      <Tabs></Tabs>
-    </div>
-  );
+
+    return (
+        <div className='App'>
+          <MessageBoard></MessageBoard>
+        </div>
+    );
 }
 
 export default App;
