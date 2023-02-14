@@ -37,11 +37,11 @@ const Todo = (props) => {
     const handleToggleComplete = (idx) => {
         const updatedData = listOfData.map((data, i) => {
             if (idx === i) {
-                data.complete = !data.complete;
+                // data.complete = !data.complete;
 
                 // To avoid mutating the data directly, do this:
-                // const updatedData = {...data, complete: !data.complete}
-                // return updatedData
+                const updatedData = {...data, complete: !data.complete}
+                return updatedData
             }
             return data
         })
