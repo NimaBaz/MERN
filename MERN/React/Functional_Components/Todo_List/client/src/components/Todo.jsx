@@ -5,6 +5,7 @@ const Todo = (props) => {
     // Getters & Setters
     const [data, setData] = useState("");
     const [listOfData, setListOfData] = useState([]);
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     const addData = (e) => {
         e.preventDefault();
@@ -54,7 +55,7 @@ const Todo = (props) => {
         if (data) {
             setData(data)
         }
-    }, []);
+    }, [buttonClicked]);
     
     useEffect(() => {
         if (didMount.current) {
@@ -77,7 +78,7 @@ const Todo = (props) => {
                 <input type="text" onChange={(e) => {setData(e.target.value)}} className="form-control" />
             </div>
             
-            <button className="btn btn-outline-dark">Add</button>
+            <button onClick={() => {setButtonClicked(!buttonClicked)}} className="btn btn-outline-dark">Add</button>
         </form>
         <hr />
 
