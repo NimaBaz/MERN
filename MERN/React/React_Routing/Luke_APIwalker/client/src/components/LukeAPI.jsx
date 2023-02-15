@@ -1,50 +1,35 @@
 import axios from 'axios'
-import React, { useState } from 'react';
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 
 
 
 const LukeAPI = () => {
     const [character, setCharacter] = useState([]);
+    const { id } = useParams();
 
-    const fetchData = () => {
-        axios.get("https://swapi.dev/api/people/")
+    useEffect(() => {
+        axios.get(`https://swapi.dev/api/people/${id}/?format=json`)
         .then((response) => {
-            console.log("This is our GET request: ", response.data.results)
-            setCharacter(response.data.results)
+            console.log("This is our GET request: ", response)
+            setCharacter(response.data)
         })
         .catch((err) => {
             console.log("This is our catch error: ", err)
         })
         console.log("This is called Asynchronous code")
-    }
+    }, [id])
+        
 
     return (
         <div>
-            <>
-            <div className='form-group'>
-                Search for: <select>
-                    <option>People</option>
-                    <option>Planets</option>
-                    <option>Starships</option>
-                </select>
-
-                ID: <input type="text" className='form-control' />
-
-                <button onClick={fetchData} className="btn btn-outline-dark mt-5">Hit Me!</button>
-            </div>
-            {
-                character.map((char, idx) => {
-                    return (
-                        <div key={idx}>
-                            <ul>
-                                <li>{char.name}</li>
-                            </ul>
-                        </div>
-                    )
-                })
-            }
-            </>
+            <ul>
+                <li>Name: {character.name}</li>
+                <li>Mass: {character.mass}</li>
+                <li>Skin color: {character.skin_color}</li>
+                <li>Hair Color: {character.hair_color}</li>
+                <li>Height: {character.height}</li>
+            </ul>
         </div>
     )
 }

@@ -1,37 +1,32 @@
 import axios from 'axios'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 
 const PlanetsAPI = () => {
     const [planets, setPlanet] = useState([]);
+    const { id } = useParams();
 
-    const fetchData = () => {
-        axios.get("https://swapi.dev/api/planets/")
+    useEffect(() => {
+        axios.get(`https://swapi.dev/api/planets/${id}/?format=json`)
         .then((response) => {
-            console.log("This is our GET request: ", response.data.results)
-            setPlanet(response.data.results)
+            console.log("This is our GET request: ", response)
+            setPlanet(response.data)
         })
         .catch((err) => {
             console.log("This is our catch error: ", err)
         })
         console.log("This is called Asynchronous code")
-    }
+    }, [id])
 
     return (
         <div>
-            <hr />
-            <h2>Planets</h2>
-            <button onClick={fetchData} className="btn btn-outline-dark mt-5">Hit Me!</button>
-            {
-                planets.map((p, idx) => {
-                    return (
-                        <div key={idx}>
-                            <ul>
-                                <li>{p.name}</li>
-                            </ul>
-                        </div>
-                    )
-                })
-            }
+            <ul>
+                <li>Planet: {planets.name}</li>
+                <li>laplanetsopulation: {planets.population}</li>
+                <li>Surface Water: {planets.surface_water ? "Yes": "No"}</li>
+                <li>Climate: {planets.climate}</li>
+                <li>Terrain: {planets.terrain}</li>
+            </ul>
         </div>
     )
 }
