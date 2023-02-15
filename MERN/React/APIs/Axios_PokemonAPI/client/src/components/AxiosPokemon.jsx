@@ -21,7 +21,7 @@ const AxiosPokemon = () => {
         <div>
             <h1>Pokemon</h1>
             <button onClick={() => {
-                console.log("The button wass clicked!")
+                console.log("The button was clicked!")
                 setButtonClicked(!buttonClicked)}} className="btn btn-outline-dark mt-5">Hit Me!</button>
             <hr />
             {
