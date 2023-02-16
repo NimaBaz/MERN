@@ -39,7 +39,7 @@ function allNonConsecutive(sortedNums) {
     const newArray = [];
 
     for (let i = 1; i < sortedNums.length; i++) {
-        if (sortedNums[i] - 1 != sortedNums[i - 1]) {
+        if (sortedNums[i] - 1 !== sortedNums[i - 1]) {
             newArray.push({key: i, value: sortedNums[i]});
         }
     }
