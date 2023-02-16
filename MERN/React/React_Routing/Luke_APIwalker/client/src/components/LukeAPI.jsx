@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 const LukeAPI = () => {
     const [character, setCharacter] = useState([]);
     const [planets, setPlanet] = useState([]);
+    const [planetID, setPlanetID] = useState([]);
     const [home, setHome] = useState([]);
     const { id } = useParams();
 
@@ -18,6 +19,8 @@ const LukeAPI = () => {
 
             console.log("This is our GET request: ", response.data.homeworld)
             setPlanet(response.data.homeworld)
+
+            setPlanetID(response.data.homeworld.split('/').slice(-2)[0])
 
             axios.get(`${planets}`)
             .then((response) => { 
@@ -42,7 +45,7 @@ const LukeAPI = () => {
                 <li>Skin color: {character.skin_color}</li>
                 <li>Hair Color: {character.hair_color}</li>
                 <li>Height: {character.height}</li>
-                <a href={`/planets/${id}`} className="tabs">Homeworld: {home.name}</a>
+                <a href={`/planets/${planetID}`} className="tabs">Homeworld: {home.name}</a>
             </ul>
         </div>
     )
