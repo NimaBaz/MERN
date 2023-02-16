@@ -6,15 +6,12 @@ const Form = (props) => {
 
     const [type, setType] = useState("people");
     const [id, setId] = useState(1);
-
     const navigate = useNavigate();
 
     const Search = (e) => {
         e.preventDefault();
         navigate(`/${type}/${id}`)
     }
-
-
 
     return (
     <form onSubmit={Search} className="form-group">
@@ -23,6 +20,8 @@ const Form = (props) => {
             <option>People</option>
             <option>Planets</option>
             <option>Starships</option>
+            <option>Films</option>
+            <option>Species</option>
         </select>
         <label> ID: </label>
         <input className="form-control" type="number" min={1} onChange={e => setId(e.target.value)} value={id} />

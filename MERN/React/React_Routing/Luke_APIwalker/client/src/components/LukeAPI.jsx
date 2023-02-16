@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 
 const LukeAPI = () => {
     const [character, setCharacter] = useState([]);
+    const [planets, setPlanet] = useState([]);
+    const [home, setHome] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
@@ -13,13 +15,24 @@ const LukeAPI = () => {
         .then((response) => {
             console.log("This is our GET request: ", response)
             setCharacter(response.data)
+
+            console.log("This is our GET request: ", response.data.homeworld)
+            setPlanet(response.data.homeworld)
+
+            axios.get(`${planets}`)
+            .then((response) => { 
+            console.log("This is our Homeworld: ", response.data) 
+            setHome(response.data)
+            })
+
+            .catch((err) => {
+                setCharacter({error: "This is not da way"})
+                console.log("This is our catch error: ", err)
+            })
+            console.log("This is called Asynchronous code")
         })
-        .catch((err) => {
-            console.log("This is our catch error: ", err)
-        })
-        console.log("This is called Asynchronous code")
-    }, [id])
-        
+    }, [id, planets])
+
 
     return (
         <div>
@@ -29,6 +42,7 @@ const LukeAPI = () => {
                 <li>Skin color: {character.skin_color}</li>
                 <li>Hair Color: {character.hair_color}</li>
                 <li>Height: {character.height}</li>
+                <a href={`/planets/${id}`} className="tabs">Homeworld: {home.name}</a>
             </ul>
         </div>
     )

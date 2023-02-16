@@ -13,6 +13,7 @@ const StarshipsAPI = () => {
             setStarships(response.data)
         })
         .catch((err) => {
+            setStarships({error: "This is not da way"})
             console.log("This is our catch error: ", err)
         })
         console.log("This is called Asynchronous code")
