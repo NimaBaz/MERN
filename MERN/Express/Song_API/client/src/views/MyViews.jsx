@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../components/Form";
-import FakerAPI from "../components/fakerAPI";
+import FakerAPI from "../components/FakerAPI";
 import { Routes, Route, Link} from "react-router-dom";
 
 
