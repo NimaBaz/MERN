@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const database = 'songDB'
+const database = 'jokeDB'
 
 mongoose.set('strictQuery', true);
 mongoose.connect(`mongodb://127.0.0.1/${database}`, {

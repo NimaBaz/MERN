@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended: true}))
 require('./config/mongoose.config')
 
 //imort our routes
-const Routes = require('./routes/song.routes')
+const Routes = require('./routes/jokes.routes')
 Routes(app)
 
 app.listen(port, () => console.log(`Welcome to the Death Star! You are on bridge port: ${port}`))
