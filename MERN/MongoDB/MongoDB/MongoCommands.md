@@ -44,8 +44,10 @@ Remove the 'taxes' interest you just added.
 db.item.update({name: "Homer Simpson"}, {$pop: {interests: 1}})
 
 Remove all students who are from California.
+db.item.remove({home_state: "CA"}, false)
 
 Remove a student by name.
+
 
 Remove a student whose lucky number is greater than 5 (JUST ONE)
 
