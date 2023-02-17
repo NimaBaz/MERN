@@ -28,17 +28,26 @@ const expected3 = [1, 6];
  *    that add up to the targetSum.
  */
 function twoSum(nums, targetSum) {
-    const newArray = [];
-
+    let j = 0;
+    
     for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
+        j = i + 1;
+        while (j < nums.length) {
             if (nums[i] + nums[j] === targetSum) {
-                newArray.push(i);
-                newArray.push(j);
+                return [i, j]
             }
+            j++;
         }
     }
-    return newArray
+
+    // for (let i = 0; i < nums.length; i++) {
+    //     for (let j = i + 1; j < nums.length; j++) {
+    //         if (nums[i] + nums[j] === targetSum) {
+    //             return [i, j]
+    //         }
+    //     }
+    // }
+    return []
 }
 
 console.log(twoSum(nums1, targetSum1))
