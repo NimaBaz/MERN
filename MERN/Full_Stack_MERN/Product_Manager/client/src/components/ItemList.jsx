@@ -1,0 +1,38 @@
+// import axios from 'axios';
+import React from "react";
+import { Link } from "react-router-dom";
+
+
+
+const ItemList = (props) => {
+
+    // const [item, setItem] = useState([]);
+    // const [loaded, setLoaded] = useState(false);
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:8000/api/items')
+    //         .then(response => {
+    //             console.log("This is our GET request: ", response)
+    //             setItem(response.data.results)
+    //             setLoaded(true)
+    //         })
+    //         .catch((err) => {
+    //             console.log("This is our catch error: ", err)
+    //         })
+    //         console.log("This is called Asynchronous code")
+    // }, [])
+
+    return (
+        <div>
+            {props.item.map((item, idx) => 
+                <ul key={idx}>
+                    <li>Item: <Link to={`/item/${item._id}`} className="tabs">{item.title}</Link></li>
+                    <li>Price: {item.price}</li>
+                    <li>Description: {item.description}</li>
+                </ul>
+            )}
+        </div>
+    )
+}
+
+export default ItemList;

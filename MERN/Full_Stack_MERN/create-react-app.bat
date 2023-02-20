@@ -9,3 +9,4 @@ npm install react-router-dom
 npm init -y
 npm install express
 npm install mongoose
+npm install cors

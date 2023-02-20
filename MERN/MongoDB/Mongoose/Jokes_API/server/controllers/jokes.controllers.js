@@ -10,6 +10,16 @@ module.exports.showAllJokes = (req, res) => {
         });
 }
 
+module.exports.showRandomJoke = (req, res) => {
+    Joke.aggregate([{$sample:{size:1}}])
+        .then((showRandomJoke) => {
+            res.json({ results: showRandomJoke })
+        })
+        .catch((err) => {
+            res.json({ message: 'This is not da way', error: err })
+        });
+}
+
 module.exports.showJoke = (req, res) => {
     Joke.findOne({ _id: req.params.id })
         .then(showJoke => {
