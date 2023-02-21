@@ -43,7 +43,15 @@ const ItemList = (props) => {
                     <li>Item: <Link to={`/item/${item._id}`} className="tabs">{item.title}</Link></li>
                     <li>Price: {item.price}</li>
                     <li>Description: {item.description}</li>
-                    <button onClick={(e) => {deleteItem(item._id)}} className='btn btn-danger'>Delete</button>
+                    <Link to={`/item/${item._id}`} className="tabs">
+                        <button className='btn btn-outline-warning'>View</button>
+                    </Link>
+                    |
+                    <Link to={`/item/${item._id}/edit`} className="tabs">
+                        <button className='btn btn-outline-warning'>Edit</button>
+                    </Link>
+                    |
+                    <button onClick={(e) => {deleteItem(item._id)}} className='btn btn-outline-danger'>Delete</button>
                 </ul>
             )}
         </div>

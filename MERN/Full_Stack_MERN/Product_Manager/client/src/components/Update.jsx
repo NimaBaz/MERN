@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 
@@ -9,14 +10,15 @@ const Update = () => {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/items/${id}`)
             .then(response => {
                 console.log("This is our GET request: ", response)
-                setTitle(response.data.results)
-                setPrice(response.data.results)
-                setDescription(response.data.results)
+                setTitle(response.data.results.title)
+                setPrice(response.data.results.price)
+                setDescription(response.data.results.description)
             })
             .catch((err) => {
                 console.log("This is our catch error: ", err)
@@ -37,6 +39,7 @@ const Update = () => {
         .catch((err) => {
             console.log("This is our catch error: ", err)
         })
+        navigate('/')
         console.log("This is called Asynchronous code")
     }
 

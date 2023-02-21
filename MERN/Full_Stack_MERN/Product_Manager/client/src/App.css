@@ -10,6 +10,7 @@ ul {
   list-style: none;
   font-weight: bold;
   font-size: 20px;
+  margin-right: 20px;
 }
 
 li {
@@ -59,5 +60,6 @@ input {
   justify-content: space-evenly;
   list-style: none;
   border: 1px solid black;
+  text-align: center;
 }
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ItemList from "../components/ItemList";
-import Form from "../components/ItemForm";
+import React, { useEffect, useState } from "react";
 
 
 
@@ -30,12 +30,11 @@ const Main = () => {
 
     return (
         <div className="main">
-            <h1>Product Manager</h1>
-            <h2>Lets add in our items!</h2>
-
-            <Form />
-            <hr />
+            
             {loaded && <ItemList item={item} removeFromDom={removeFromDom} />}
+            <Link to={`/item`} className="tabs">
+                <button className='btn btn-primary'>Create</button>
+            </Link>
 
         </div>
     );
