@@ -24,6 +24,10 @@ const Main = () => {
             console.log("This is called Asynchronous code")
     }, [])
 
+    const removeFromDom = itemID => {
+        setItem(item.filter(items => items._id !== itemID));
+    }
+
     return (
         <div className="main">
             <h1>Product Manager</h1>
@@ -31,7 +35,7 @@ const Main = () => {
 
             <Form />
             <hr />
-            {loaded && <ItemList item={item}/>}
+            {loaded && <ItemList item={item} removeFromDom={removeFromDom} />}
 
         </div>
     );

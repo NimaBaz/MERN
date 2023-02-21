@@ -1,10 +1,24 @@
-// import axios from 'axios';
+import axios from 'axios';
 import React from "react";
 import { Link } from "react-router-dom";
 
 
 
 const ItemList = (props) => {
+
+    const { removeFromDom } = props;
+    
+    const deleteItem = (itemID) => {
+        axios.delete(`http://localhost:8000/api/items/delete/${itemID}`)
+            .then(response => {
+                console.log("This item was removed: ", response)
+                removeFromDom(itemID)
+            })
+            .catch((err) => {
+                console.log("This is our catch error: ", err)
+            })
+            console.log("This is called Asynchronous code")
+    }
 
     // const [item, setItem] = useState([]);
     // const [loaded, setLoaded] = useState(false);
@@ -29,6 +43,7 @@ const ItemList = (props) => {
                     <li>Item: <Link to={`/item/${item._id}`} className="tabs">{item.title}</Link></li>
                     <li>Price: {item.price}</li>
                     <li>Description: {item.description}</li>
+                    <button onClick={(e) => {deleteItem(item._id)}} className='btn btn-danger'>Delete</button>
                 </ul>
             )}
         </div>

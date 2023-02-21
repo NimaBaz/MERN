@@ -54,3 +54,10 @@ input {
   color: black;
 }
 
+.nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  border: 1px solid black;
+}
+

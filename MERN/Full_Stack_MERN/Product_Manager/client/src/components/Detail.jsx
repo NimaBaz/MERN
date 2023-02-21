@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 
@@ -27,6 +28,9 @@ const Details = () => {
                 <li>Item: {items.title}</li>
                 <li>Price: {items.price}</li>
                 <li>Description: {items.description}</li>
+                <Link to={`/item/${items._id}/edit`} className="tabs">
+                    <button className='btn btn-outline-warning'>Edit</button>
+                </Link>
             </ul>
         </div>
     )

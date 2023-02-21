@@ -35,7 +35,7 @@ const Form = () => {
         <label> Description: </label> <br />
         <input className="form-control" type="text" onChange={e => setDescription(e.target.value)} value={description} />
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Create" />
     </form>
     );
 }
