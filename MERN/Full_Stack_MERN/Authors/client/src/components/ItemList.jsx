@@ -26,8 +26,8 @@ const ItemList = (props) => {
                     <thead>
                         <tr>
                             <th scope="col" className='tabs'>Author</th>
-                            <th scope="col" className='tabs'>Price</th>
                             <th scope="col" className='tabs'>Description</th>
+                            <th scope="col" className='tabs'>Price</th>
                             <th scope="col" className='tabs'>Views</th>
                         </tr>
                     </thead>
@@ -36,8 +36,8 @@ const ItemList = (props) => {
                         {props.item.map((item, idx) => 
                             <tr key={idx}>
                                 <td className='tabs'><Link to={`/item/${item._id}`} className="tabs">{item.author}</Link></td>
-                                <td className='tabs'>${item.price.toFixed(2)}</td>
                                 <td className='tabs'>{item.description}</td>
+                                <td className='tabs'>${item.price.toFixed(2)}</td>
                                 <td>
                                     <Link to={`/item/${item._id}`} className="tabs">
                                         <button className='btn btn-outline-warning'>View</button>
