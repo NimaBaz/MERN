@@ -1,6 +1,6 @@
 import axios from 'axios';
+import React from 'react';
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
 
 
 
@@ -28,7 +28,7 @@ const ItemList = (props) => {
                             <th scope="col" className='tabs'>Author</th>
                             <th scope="col" className='tabs'>Description</th>
                             <th scope="col" className='tabs'>Price</th>
-                            <th scope="col" className='tabs'>Views</th>
+                            <th scope="col" className='tabs'>Actions</th>
                         </tr>
                     </thead>
 
