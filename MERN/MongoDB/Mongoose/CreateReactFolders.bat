@@ -14,6 +14,8 @@ cd %CurrentDir%
 call InstallReact.bat %1
 cd %CurrentDir%
 
+
+
 rem: adding folders
 mkdir %1\client\src\components
 mkdir %1\server\config
@@ -24,20 +26,22 @@ mkdir %1\server\routes
 call InstallBootStrap.bat %1 
 cd %CurrentDir%
 
-call InstallRouter.bat %1
+call InstallFrontEnd.bat %1
 cd %CurrentDir%
 
-call InstallAxios.bat %1
+
+call SetupBackend.bat %1
 cd %CurrentDir%
 
-call InstallExress.bat %1
+
+call InstallBackend.bat %1
 cd %CurrentDir%
+
 
 rem Go back to Client dir and run npm start
 cd  %1\client
 npm start
 goto :EXIT
-
 
 
 :ERROR
