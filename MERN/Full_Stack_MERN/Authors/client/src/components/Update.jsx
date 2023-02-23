@@ -8,6 +8,7 @@ const Update = () => {
     const { id } = useParams();
     const [author, setAuthor] = useState("");
     const [price, setPrice] = useState("");
+    const [top50, setTop50] = useState(false);
     const [errors, setErrors] = useState([]);
     const [description, setDescription] = useState("");
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ const Update = () => {
                 setAuthor(response.data.results.author)
                 setPrice(response.data.results.price)
                 setDescription(response.data.results.description)
+                setTop50(response.data.results.top50)
             })
             .catch((err) => {
                 console.log("This is our catch error: ", err)
@@ -31,7 +33,8 @@ const Update = () => {
         axios.put(`http://localhost:8000/api/items/update/${id}`, {
             author,
             price,
-            description
+            description,
+            top50
         })
         .then((response) => {
             console.log("This is our GET request: ", response)
@@ -63,6 +66,11 @@ const Update = () => {
 
                 <label> Description: </label> <br />
                 <input className="form-control" type="text" onChange={e => setDescription(e.target.value)} value={description} />
+
+                <div>
+                    <label>Top50</label>
+                    <input type='checkbox' checked={top50} onChange={(e) => setTop50(e.target.checked)}/>
+                </div>
 
                 <button onClick={updateItem} className='btn btn-warning'>Submit</button>
                 <Link to={"/"} className="tabs">

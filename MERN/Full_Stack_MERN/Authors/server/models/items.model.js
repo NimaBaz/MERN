@@ -16,6 +16,10 @@ const AuthorSchema = new mongoose.Schema({
         required: [true, "Description required"],
         minlength: [3, "Description line must be at least 3 characters long"],
         maxlength: [300, "Description can only be 300 characters long"]
+    },
+    top50: {
+        type: Boolean,
+        required: [false]
     }
 }, {timestamps: true})
 

@@ -7,6 +7,7 @@ const Form = () => {
 
     const [author, setAuthor] = useState("");
     const [price, setPrice] = useState("");
+    const [top50, setTop50] = useState(false);
     const [errors, setErrors] = useState([]);
     const [description, setDescription] = useState("");
     const navigate = useNavigate()
@@ -16,7 +17,8 @@ const Form = () => {
         axios.post('http://localhost:8000/api/items/new', {
             author,
             price,
-            description
+            description,
+            top50
         })
         .then((response) => {
             console.log("This is our GET request: ", response)
@@ -48,6 +50,11 @@ const Form = () => {
 
             <label> Description: </label> <br />
             <input className="form-control" type="text" onChange={e => setDescription(e.target.value)} value={description} />
+
+            <div>
+                <label>Top50</label>
+                <input type='checkbox' checked={top50} onChange={(e) => setTop50(e.target.checked)}/>   
+            </div>
 
             <button onClick={Create} className='btn btn-warning'>Create</button>
             |

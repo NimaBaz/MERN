@@ -28,6 +28,8 @@ const ItemList = (props) => {
                             <th scope="col" className='tabs'>Author</th>
                             <th scope="col" className='tabs'>Description</th>
                             <th scope="col" className='tabs'>Price</th>
+                            <th scope="col" className='tabs'>Top50</th>
+
                             <th scope="col" className='tabs'>Actions</th>
                         </tr>
                     </thead>
@@ -38,6 +40,7 @@ const ItemList = (props) => {
                                 <td className='tabs'><Link to={`/item/${item._id}`} className="tabs">{item.author}</Link></td>
                                 <td className='tabs'>{item.description}</td>
                                 <td className='tabs'>${item.price.toFixed(2)}</td>
+                                <td className='tabs'>{item.top50 ? "Yes" : "No"}</td>
                                 <td>
                                     <Link to={`/item/${item._id}`} className="tabs">
                                         <button className='btn btn-outline-warning'>View</button>
