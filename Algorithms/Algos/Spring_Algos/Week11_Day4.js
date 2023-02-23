@@ -98,9 +98,8 @@ console.log(flattenObjectOfArrays(object1));
  */
 
 
-const functionalFlattenObjectOfArrays = (obj) => {
-    return Object.values(obj).flat().map(({id, type}) => ({id, type}))
-}
+const functionalFlattenObjectOfArrays = (obj) =>  Object.values(obj).flat().map(({id, type}) => ({id, type}))
+
 console.log(functionalFlattenObjectOfArrays(object1));
 
 /*****************************************************************************/
